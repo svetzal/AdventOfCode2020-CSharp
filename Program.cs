@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Microsoft.VisualBasic.CompilerServices;
-
-namespace AdventOfCode
+﻿namespace AdventOfCode
 {
     public static class Program
     {

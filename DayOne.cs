@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AdventOfCode
 {
-    public class DayOne
+    public static class DayOne
     {
         public static void TwoNumbers(string filename)
         {
