@@ -1,6 +1,6 @@
 # Advent of Code 2020
 
-This is my personal repo where I'm working through the Advent of Code kata.
+This is my personal repo where I'm working through the [Advent of Code](https://adventofcode.com) kata.
 
 Every year for the past five years Eric Wastl has created a set of code exercises, one for every day of Advent.
 
