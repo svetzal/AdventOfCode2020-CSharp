@@ -5,15 +5,28 @@ using System.Linq;
 
 namespace AdventOfCode
 {
-    internal static class Utility
+    public static class Utility
     {
         public static IEnumerable<int> ReadFileToNumbers(string filename)
         {
-            using var sr = new StreamReader(filename);
-            var numberFile = sr.ReadToEnd();
-            var numbers = numberFile.Split("\n")
+            var lines = ReadLinesFromFile(filename);
+            var numbers = lines
                 .Select(int.Parse);
             return numbers;
+        }
+
+        public static string[] ReadLinesFromFile(string filename)
+        {
+            var numberFile = ReadEntireFile(filename);
+            var lines = numberFile.Split("\n");
+            return lines;
+        }
+
+        public static string ReadEntireFile(string filename)
+        {
+            using var sr = new StreamReader(filename);
+            var contents = sr.ReadToEnd();
+            return contents;
         }
     }
 }

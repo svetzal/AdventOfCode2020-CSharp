@@ -9,6 +9,8 @@
             DayOne.ThreeNumbers("dayOneInput.txt");
             
             // Day Two
+            DayTwo.CountInvalidPasswordsForSled("dayTwoInput.txt");
+            DayTwo.CountInvalidPasswordsForToboggan("dayTwoInput.txt");
         }
     }
 }
