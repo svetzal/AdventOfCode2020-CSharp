@@ -6,13 +6,13 @@ using Xunit.Sdk;
 
 namespace AdventOfCode
 {
-    public class DayTwo
+    public class Day02
     {
         private static readonly Regex Pattern = new Regex(@"^(\d+)-(\d+)\s(\w):\s(.*)$");
 
         public static void CountInvalidPasswordsForSled(string filename)
         {
-            var lines = Utility.ReadLinesFromFile("dayTwoInput.txt");
+            var lines = Utility.ReadLinesFromFile(filename);
 
             int validLines = lines.Aggregate(0, (count, line) =>
             {
@@ -25,7 +25,7 @@ namespace AdventOfCode
 
         public static void CountInvalidPasswordsForToboggan(string filename)
         {
-            var lines = Utility.ReadLinesFromFile("dayTwoInput.txt");
+            var lines = Utility.ReadLinesFromFile(filename);
 
             int validLines = lines.Aggregate(0, (count, line) =>
             {

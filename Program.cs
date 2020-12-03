@@ -5,12 +5,16 @@
         public static void Main(string[] args)
         {
             // Day One
-            DayOne.TwoNumbers("dayOneInput.txt");
-            DayOne.ThreeNumbers("dayOneInput.txt");
+            Day01.TwoNumbers("Day01Input.txt");
+            Day01.ThreeNumbers("Day01Input.txt");
             
             // Day Two
-            DayTwo.CountInvalidPasswordsForSled("dayTwoInput.txt");
-            DayTwo.CountInvalidPasswordsForToboggan("dayTwoInput.txt");
+            Day02.CountInvalidPasswordsForSled("Day02Input.txt");
+            Day02.CountInvalidPasswordsForToboggan("Day02Input.txt");
+            
+            // Day Three
+            Day03.CountTrees("Day03Input.txt");
+            Day03.TreeProduct("Day03Input.txt");
         }
     }
 }
