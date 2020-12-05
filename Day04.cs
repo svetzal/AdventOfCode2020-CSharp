@@ -67,7 +67,7 @@ namespace AdventOfCode
         private readonly Regex _hairColourPattern = new Regex(@"^#[0-9a-fA-F]{6}$");
         private readonly Regex _eyeColourPattern = new Regex(@"^amb|blu|brn|gry|grn|hzl|oth$");
         private readonly Regex _passportIdPattern = new Regex(@"^\d{9}$");
-        private Dictionary<string, Func<string, bool>> _validators;
+        private readonly Dictionary<string, Func<string, bool>> _validators;
 
         public Passport()
         {

@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
-    public class Day05
+    public static class Day05
     {
         public static void HighestSeatId(string filename)
         {
@@ -24,8 +24,6 @@ namespace AdventOfCode
                 if (ids[i + 1] - ids[i] > 1)
                     Console.WriteLine($"My seat ID is {ids[i] + 1}");
             }
-
-            // Console.WriteLine($"My seat ID is {mine}");
         }
 
         private static int MakeBinaryInt(string line)
