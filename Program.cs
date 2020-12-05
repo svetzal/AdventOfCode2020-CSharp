@@ -19,6 +19,10 @@
             // Day Four
             Day04.CountValidPassports("Day04Input.txt");
             Day04.CountReallyValidPassports("Day04Input.txt");
+            
+            // Day Five
+            Day05.HighestSeatId("Day05Input.txt");
+            Day05.MySeatId("Day05Input.txt");
         }
     }
 }
