@@ -1,47 +1,51 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Xunit;
-using Xunit.Sdk;
 
 namespace AdventOfCode
 {
-    public class Day02
+    public static class Day02
     {
-        private static readonly Regex Pattern = new Regex(@"^(\d+)-(\d+)\s(\w):\s(.*)$");
-
         public static void CountInvalidPasswordsForSled(string filename)
         {
             var lines = Utility.ReadLinesFromFile(filename);
+            var validator = new SledPasswordValidator();
 
-            int validLines = lines.Aggregate(0, (count, line) =>
-            {
-                var pw = ExtractPasswordWithSpec(line);
-                return pw.IsValidForSled ? count+1 : count;
-            });
-            
+            int validLines = lines
+                .Count(l => validator.Validate(l));
+
             Console.WriteLine($"{validLines} valid Sled passwords in file.");
         }
 
         public static void CountInvalidPasswordsForToboggan(string filename)
         {
             var lines = Utility.ReadLinesFromFile(filename);
+            var validator = new TobogganPasswordValidator();
 
-            int validLines = lines.Aggregate(0, (count, line) =>
-            {
-                var pw = ExtractPasswordWithSpec(line);
-                return pw.IsValidForToboggan ? count + 1 : count;
-            });
-            
+            int validLines = lines
+                .Count(l => validator.Validate(l));
+
             Console.WriteLine($"{validLines} valid Toboggan passwords in file.");
         }
+    }
 
-        private static PasswordWithSpec ExtractPasswordWithSpec(string line)
+    public class PasswordWithSpec
+    {
+        public int Low { get; set; }
+        public int High { get; set; }
+        public char Character { get; set; }
+        public string Password { get; set; }
+    }
+
+    public abstract class Validator
+    {
+        private static readonly Regex Pattern = new Regex(@"^(\d+)-(\d+)\s(\w):\s(.*)$");
+
+        public abstract bool Validate(string line);
+
+        protected static PasswordWithSpec ExtractPasswordWithSpec(string line)
         {
-            var matches = Pattern.Matches(line);
-            Assert.True(matches.Count > 0);
-            var match = matches.First();
-            var groups = match.Groups;
+            var groups = Pattern.Matches(line).First().Groups;
             PasswordWithSpec pw = new PasswordWithSpec()
             {
                 Low = int.Parse(groups[1].ToString()),
@@ -53,34 +57,26 @@ namespace AdventOfCode
         }
     }
 
-    public class PasswordWithSpec
+    public class SledPasswordValidator : Validator
     {
-        public int Low { get; set; }
-        public int High { get; set; }
-        public char Character { get; set; }
-        public string Password { get; set; }
-
-        // TODO: Externalize strategy, make it a parameter
-        
-        public bool IsValidForSled
+        public override bool Validate(string line)
         {
-            get
-            {
-                var count = Password.Count(c => c == Character);
-                return count >= Low && count <= High;
-            }
+            PasswordWithSpec pws = ExtractPasswordWithSpec(line);
+            var count = pws.Password.Count(c => c == pws.Character);
+            return count >= pws.Low && count <= pws.High;
         }
+    }
 
-        public bool IsValidForToboggan
+    public class TobogganPasswordValidator : Validator
+    {
+        public override bool Validate(string line)
         {
-            get
-            {
-                var chars = Password.ToCharArray();
-                var lowChar = chars[Low-1];
-                var highChar = chars[High-1];
-                return (lowChar == Character || highChar == Character)
-                       && !(lowChar == Character && highChar == Character);
-            }
+            var pws = ExtractPasswordWithSpec(line);
+            var chars = pws.Password.ToCharArray();
+            var lowChar = chars[pws.Low - 1];
+            var highChar = chars[pws.High - 1];
+            return (lowChar == pws.Character || highChar == pws.Character)
+                   && !(lowChar == pws.Character && highChar == pws.Character);
         }
     }
 }
