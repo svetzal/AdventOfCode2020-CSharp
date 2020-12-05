@@ -17,9 +17,7 @@ namespace AdventOfCode
 
         public static string[] ReadLinesFromFile(string filename)
         {
-            var numberFile = ReadEntireFile(filename);
-            var lines = numberFile.Split("\n");
-            return lines;
+            return File.ReadAllLines(filename).ToArray();
         }
 
         public static string ReadEntireFile(string filename)

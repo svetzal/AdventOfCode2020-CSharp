@@ -15,6 +15,10 @@
             // Day Three
             Day03.CountTrees("Day03Input.txt");
             Day03.TreeProduct("Day03Input.txt");
+            
+            // Day Four
+            Day04.CountValidPassports("Day04Input.txt");
+            Day04.CountReallyValidPassports("Day04Input.txt");
         }
     }
 }
