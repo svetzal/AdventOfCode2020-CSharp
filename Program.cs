@@ -23,6 +23,10 @@
             // Day Five
             Day05.HighestSeatId("Day05Input.txt");
             Day05.MySeatId("Day05Input.txt");
+            
+            // Day Six
+            Day06.SumOfAllQuestionsAnsweredYes("Day06Input.txt");
+            Day06.SumOfAllQuestionsAllYes("Day06Input.txt");
         }
     }
 }
