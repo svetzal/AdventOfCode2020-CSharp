@@ -27,6 +27,10 @@
             // Day Six
             Day06.SumOfAllQuestionsAnsweredYes("Day06Input.txt");
             Day06.SumOfAllQuestionsAllYes("Day06Input.txt");
+            
+            // Day Seven
+            Day07.BagsThatCanEventuallyHoldAShinyGoldBag("Day07Input.txt");
+            Day07.BagsThatAShinyGoldBagCanHold("Day07Input.txt");
         }
     }
 }
