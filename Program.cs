@@ -31,6 +31,10 @@
             // Day Seven
             Day07.BagsThatCanEventuallyHoldAShinyGoldBag("Day07Input.txt");
             Day07.BagsThatAShinyGoldBagCanHold("Day07Input.txt");
+            
+            // Day Eight
+            Day08.FindAccumulatorAtInfiniteLoop("Day08Input.txt");
+            Day08.MutateToFindNormalExitAccumulator("Day08Input.txt");
         }
     }
 }

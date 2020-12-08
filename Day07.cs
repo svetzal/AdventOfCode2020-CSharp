@@ -24,7 +24,7 @@ namespace AdventOfCode
 
         public static void BagsThatAShinyGoldBagCanHold(string filename)
         {
-            if (BagSpecs.Count==0) LoadBagSpecs(filename);
+            if (BagSpecs.Count == 0) LoadBagSpecs(filename);
             var bag = GetOrCreateBagSpec("shiny gold");
             var count = CountContainedBags(0, bag);
             Console.WriteLine($"A {bag.Colour} bag contains {count} bags.");
@@ -33,9 +33,7 @@ namespace AdventOfCode
         private static int CountContainedBags(int count, BagSpec bag)
         {
             foreach (var b in bag.PossibleContents)
-            {
                 count += CountContainedBags(1, b) * bag.Quantities[b];
-            }
             return count;
         }
 
@@ -44,15 +42,14 @@ namespace AdventOfCode
             var containers = new HashSet<BagSpec>();
             foreach (var bag in bags)
             {
-                var contents = BagSpecs.Where(b => b.PossibleContents.Contains(bag));
-                foreach (var c in contents) containers.Add(c);
+                foreach (var c in BagSpecs
+                    .Where(b => b.PossibleContents.Contains(bag)))
+                    containers.Add(c);
             }
 
             if (containers.Any())
-            {
-                var toAdd = ContainersThatCanHold(containers);
-                foreach (var c in toAdd) containers.Add(c);
-            }            
+                foreach (var c in ContainersThatCanHold(containers))
+                    containers.Add(c);
             return containers;
         }
 
@@ -160,6 +157,5 @@ namespace AdventOfCode
             PossibleContents.Add(spec);
             Quantities[spec] = quantity;
         }
-
     }
 }
