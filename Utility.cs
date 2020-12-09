@@ -9,10 +9,8 @@ namespace AdventOfCode
     {
         public static IEnumerable<int> ReadFileToNumbers(string filename)
         {
-            var lines = ReadLinesFromFile(filename);
-            var numbers = lines
+            return ReadLinesFromFile(filename)
                 .Select(int.Parse);
-            return numbers;
         }
 
         public static string[] ReadLinesFromFile(string filename)
@@ -25,6 +23,12 @@ namespace AdventOfCode
             using var sr = new StreamReader(filename);
             var contents = sr.ReadToEnd();
             return contents;
+        }
+
+        public static IEnumerable<long> ReadFileToLongNumbers(string filename)
+        {
+            return ReadLinesFromFile(filename)
+                .Select(long.Parse);
         }
     }
 }

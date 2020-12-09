@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace AdventOfCode
 {
-    public class Day08
+    public static class Day08
     {
         public static void FindAccumulatorAtInfiniteLoop(string filename)
         {
